@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <html>
+    <head>
+      <title>Nhóm nhỏ</title>
+      <link rel="stylesheet" href="main.css" type="text/css" />
+      <script type="text/javascript" src="./Winwheel.min.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    </head>
+    <body>
+      <div style="text-align: center">
+        <h1>Chiếc nón kỳ diệu</h1>
+
+        <div class="content">
+          <div class="power">
+            <div class="select-power">
+              <div class="pw-title" onclick="">POWER</div>
+              <div class="pw3" onclick="onClickPower(event)">Hight</div>
+              <div class="pw2" onclick="onClickPower(event)">Medium</div>
+              <div class="pw1" onclick="onClickPower(event)">Low</div>
+            </div>
+          </div>
+
+          <div
+            style="width: 100%; height: 600px; margin: 0 auto"
+            class="wheel clickable"
+          >
+            <canvas id="canvas" width="600" height="650" onClick="startSpin();">
+              <p style="color: white; text-align: center">
+                Sorry, your browser doesn't support canvas. Please try another.
+              </p>
+            </canvas>
+          </div>
+
+          <div class="result">
+            <h1>Kết Quả:</h1>
+            <div>
+              <h1 style="color: red">
+                <strong id="result">Waiting...</strong>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        // Create new wheel object specifying the parameters at creation time.
+        let theWheel = new Winwheel({
+          numSegments: 23, // Specify number of segments.
+          outerRadius: 240, // Set outer radius so wheel fits inside the background.
+          textFontSize: 20, // Set font size as desired.
+          textFontFamily: 'Arial',
+          responsive: true,
+          // Define segments including colour and text.
+          segments: [
+            {
+              fillStyle: '#A18C94',
+              textFillStyle: '#F00',
+              textFontWeight: 'bolder',
+              textStrokeStyle: '#fff',
+              text: '100',
+            },
+            {
+              fillStyle: '#8A6130',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '2000',
+            },
+            {
+              fillStyle: '#A72762',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '300',
+            },
+            {
+              fillStyle: '#A18C94',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: 'CHIA ĐÔI',
+            },
+            {
+              fillStyle: '#3D9ACE',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '700',
+            },
+            {
+              fillStyle: '#8A6130',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '900',
+            },
+            {
+              fillStyle: '#A72762',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '300',
+            },
+            {
+              fillStyle: '#F0212E',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: 'THÊM LƯỢT',
+            },
+            {
+              fillStyle: '#FBEB4F',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '300',
+            },
+            {
+              fillStyle: '#3D9ACE',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '600',
+            },
+            {
+              fillStyle: '#EF212E',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '400',
+            },
+            {
+              fillStyle: '#379484',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '1000',
+            },
+            {
+              fillStyle: '#F5AE55',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: 'MẤT ĐIỂM',
+            },
+            {
+              fillStyle: '#F0388B',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '800',
+            },
+            {
+              fillStyle: '#FBEB4F',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '300',
+            },
+            {
+              fillStyle: '#EF212E',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '900',
+            },
+            {
+              fillStyle: '#3D9ACE',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: 'MẤT LƯỢT',
+            },
+            {
+              fillStyle: '#379484',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '400',
+            },
+            {
+              fillStyle: '#FADAE6',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '1000',
+            },
+            {
+              fillStyle: '#ccc',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '700',
+            },
+            {
+              fillStyle: '#F0388B',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '200',
+            },
+            {
+              fillStyle: '#FBEB4F',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: 'NHÂN ĐÔI',
+            },
+            {
+              fillStyle: '#3D99CE',
+              textFillStyle: '#F00',
+              textStrokeStyle: '#fff',
+              text: '500',
+            },
+          ],
+          // Specify the animation to use.
+          animation: {
+            type: 'spinToStop',
+            direction: 'clockwise',
+            stopAngle: 0,
+            duration: 15,
+            spins: 8,
+            callbackFinished: alertPrize,
+            callbackSound: playSound, // Function to call when the tick sound is to be triggered.
+            soundTrigger: 'pin', // Specify pins are to trigger the sound, the other option is 'segment'.
+          },
+          pins: {
+            number: 23, // Number of pins. They space evenly around the wheel.
+          },
+        });
+
+        // -----------------------------------------------------------------
+        // This function is called when the segment under the prize pointer changes
+        // we can play a small tick sound here like you would expect on real prizewheels.
+        // -----------------------------------------------------------------
+        let audio = new Audio('tick.mp3'); // Create audio object and load tick.mp3 file.
+
+        function playSound() {
+          // Stop and rewind the sound if it already happens to be playing.
+          audio.pause();
+          audio.currentTime = 0;
+
+          // Play the sound.
+          audio.play();
+        }
+
+        // -------------------------------------------------------
+        // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters
+        // note the indicated segment is passed in as a parmeter as 99% of the time you will want to know this to inform the user of their prize.
+        // -------------------------------------------------------
+        function alertPrize(indicatedSegment) {
+          theWheel.stopAnimation(false);
+          document.getElementById('result').textContent = indicatedSegment.text;
+          theWheel.draw();
+          wheelSpinning = false;
+        }
+
+        // =======================================================================================================================
+        // Code below for the power controls etc which is entirely optional. You can spin the wheel simply by
+        // calling theWheel.startAnimation();
+        // =======================================================================================================================
+
+        function onClickPower(e) {
+          const [className] = e.target.getAttribute('class')?.split(' ');
+          if (className === 'pw3') {
+            wheelPower = 3;
+            document
+              .getElementsByClassName('pw1')[0]
+              .setAttribute('class', 'pw1');
+            document
+              .getElementsByClassName('pw2')[0]
+              .setAttribute('class', 'pw2');
+
+            document
+              .getElementsByClassName('pw3')[0]
+              .setAttribute('class', 'pw3 active');
+          }
+
+          if (className === 'pw2') {
+            wheelPower = 2;
+            document
+              .getElementsByClassName('pw1')[0]
+              .setAttribute('class', 'pw1');
+
+            document
+              .getElementsByClassName('pw2')[0]
+              .setAttribute('class', 'pw2 active');
+
+            document
+              .getElementsByClassName('pw3')[0]
+              .setAttribute('class', 'pw3');
+          }
+
+          if (className === 'pw1') {
+            wheelPower = 1;
+            document
+              .getElementsByClassName('pw1')[0]
+              .setAttribute('class', 'pw1 active');
+            document
+              .getElementsByClassName('pw2')[0]
+              .setAttribute('class', 'pw2');
+            document
+              .getElementsByClassName('pw3')[0]
+              .setAttribute('class', 'pw3');
+          }
+        }
+
+        let wheelPower = 2;
+        let wheelSpinning = false;
+        document
+          .getElementsByClassName('pw2')[0]
+          .setAttribute('class', 'pw2 active');
+
+        // -------------------------------------------------------
+        // Click handler for spin button.
+        // -------------------------------------------------------
+        function startSpin() {
+          console.log({ wheelSpinning, wheelPower });
+          if (!wheelSpinning) {
+            // Based on the power level selected adjust the number of spins for the wheel, the more times is has
+            // to rotate with the duration of the animation the quicker the wheel spins.
+            if (wheelPower == 1) {
+              theWheel.animation.spins = 3;
+            } else if (wheelPower == 2) {
+              theWheel.animation.spins = 8;
+            } else if (wheelPower == 3) {
+              theWheel.animation.spins = 15;
+            }
+
+            document.getElementById('result').textContent = 'Waiting...';
+
+            // Begin the spin animation by calling startAnimation on the wheel object.
+            theWheel.startAnimation();
+            wheelSpinning = true;
+          }
+        }
+      </script>
+    </body>
+  </html>
+</html>
