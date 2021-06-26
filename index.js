@@ -1,0 +1,146 @@
+const a = [
+  {
+    fillStyle: '#A18C94',
+    textFillStyle: '#F00',
+    textFontWeight: 'bolder',
+    textStrokeStyle: '#fff',
+    text: '100',
+  },
+  {
+    fillStyle: '#8A6130',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '2000',
+  },
+  {
+    fillStyle: '#A72762',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '300',
+  },
+  {
+    fillStyle: '#A18C94',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: 'CHIA ĐÔI',
+  },
+  {
+    fillStyle: '#3D9ACE',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '700',
+  },
+  {
+    fillStyle: '#8A6130',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '900',
+  },
+  {
+    fillStyle: '#A72762',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '300',
+  },
+  {
+    fillStyle: '#F0212E',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: 'THÊM LƯỢT',
+  },
+  {
+    fillStyle: '#FBEB4F',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '300',
+  },
+  {
+    fillStyle: '#3D9ACE',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '600',
+  },
+  {
+    fillStyle: '#EF212E',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '400',
+  },
+  {
+    fillStyle: '#379484',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '1000',
+  },
+  {
+    fillStyle: '#F5AE55',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: 'MẤT ĐIỂM',
+  },
+  {
+    fillStyle: '#F0388B',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '800',
+  },
+  {
+    fillStyle: '#FBEB4F',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '300',
+  },
+  {
+    fillStyle: '#EF212E',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '900',
+  },
+  {
+    fillStyle: '#3D9ACE',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: 'MẤT LƯỢT',
+  },
+  {
+    fillStyle: '#379484',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '400',
+  },
+  {
+    fillStyle: '#FADAE6',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '1000',
+  },
+  {
+    fillStyle: '#ccc',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '700',
+  },
+  {
+    fillStyle: '#F0388B',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '200',
+  },
+  {
+    fillStyle: '#FBEB4F',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: 'NHÂN ĐÔI',
+  },
+  {
+    fillStyle: '#3D99CE',
+    textFillStyle: '#F00',
+    textStrokeStyle: '#fff',
+    text: '500',
+  },
+]
+  .map((x) => x.text)
+  .join('\n');
+console.log(a);
